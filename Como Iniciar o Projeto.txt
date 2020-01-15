@@ -1,0 +1,19 @@
+Um projeto realizado em um curso complementar, realizado pelo professor Jorge Sant Ana e reproduzido por mim durantes as aulas.
+
+link do curso: https://www.udemy.com/course/web-completo/ Seção: 19. Aula: 514 até 522.
+
+Como iniciar o projeto Bom, localize o .exe do php e indique no path das variáveis de ambiente do Windows. No meu caso, como eu utilizo o xampp, o caminho até a executável do php ficou assim: C:\xampp\php.
+
+Agora vamos indicar a porta que queremos utilizar
+
+1) Ao clonar esse projeto, indique o diretório public no cmd, utilize o comando: cd Caminho_Até_O_diretório_public exemplo: cd C:\Projeto\Projeto_TwitterClone\Public
+
+2)Agora você irá iniciar o servidor, basta fazer o seguinte comando: php -S localhost:numero_Da_porta exemplo: php -S localhost:3333
+
+3)Aperte a tecla enter e aguarde a resposta de inicialização do servidor, ao receber essa mensagem acesse a porta que você inseriu na URL do seu navegador: localhost:3333
+
+Sequência: cd C:\Projeto\Projeto_TwitterClone\Public php -S localhost:3333
+
+Vá na url do seu navegador de prefência e escreva localhost:3333
+
+Banco de dados: O projeto foi realizado utilizando o banco de dados MySQL. A pasta das tabelas estão no projeto.
