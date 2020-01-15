@@ -1,0 +1,116 @@
+<nav class="navbar navbar-expand-lg menu">
+	<div class="container">
+	  <div class="navbar-nav">
+	  	<a class="menuItem" href="/timeline">
+	  		Home
+	  	</a>
+
+	  	<a class="menuItem" href="/sair">
+	  		Sair
+	  	</a>
+			<img src="/img/twitter_logo.png" class="menuIco" />
+	  </div>
+	</div>
+</nav>
+
+<div class="container mt-5">
+	<div class="row pt-2">
+		
+		<div class="col-md-3">
+
+			<div class="perfil">
+				<div class="perfilTopo">
+
+				</div>
+
+				<div class="perfilPainel">
+					
+					<div class="row mt-2 mb-2">
+						<div class="col mb-2">
+							<span class="perfilPainelNome"><?=$_SESSION['nome'] ?></span>
+						</div>
+					</div>
+
+					<div class="row mb-2">
+
+						<div class="col">
+							<span class="perfilPainelItem">Tweets</span><br />
+							<span class="perfilPainelItemValor"><?=$this->view->total_tweets['total_tweet']?></span>
+						</div>
+
+						<div class="col">
+							<span class="perfilPainelItem">Seguindo</span><br />
+							<span class="perfilPainelItemValor"><?=$this->view->total_seguindo['total_seguindo']?></span>
+						</div>
+
+						<div class="col">
+							<span class="perfilPainelItem">Seguidores</span><br />
+							<span class="perfilPainelItemValor"><?=$this->view->total_seguidores['total_seguidores']?></span>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+
+		<div class="col-md-6">
+			
+			<div class="row mb-2">
+				<div class="col">
+					<div class="card">
+						<div class="card-body">
+						<!-- Enviando para a action quemSeguir a partir da rota /quem_seguir -->
+							<form method="get" action="/quem_seguir">
+								<div class="input-group mb-3">
+									<input type="text" class="form-control" placeholder="Quem você está procurando?" name="pesquisarPor">
+									<div class="input-group-append">
+										<button class="btn btn-primary" type="submit">Procurar</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<?php foreach($this->view->userlist as $indice => $usuario) { ?>
+			<div class="row mb-2">
+				<div class="col">
+					<div class="card">
+						<div class="card-body">
+							<div class="row">
+								<div class="col-md-6">
+								<!-- Listando o nome do usuário com base na busca em AppController -->
+								 <?=$usuario['nome']?>
+								</div>
+							
+								<div class="col-md-6 d-flex justify-content-end">
+									<div>
+										<!-- Dependendo se o usuário irá seguir ou não, iremos enviar uma variável
+										que irá tomar a decisão se iremos seguir ou não. Veja que estou passando 
+										como segundo parâmetro o id_usuario, que é o id do usuário que será ou não
+										seguido -->
+										<?php if($usuario['seguindo_sn'] == 0) { ?>
+										<!-- O button seguir só será exibido se o contador retornar 0, no caso o 0 retorna 
+										0 usuário que foram seguidos pelo usuário autenticado-->
+										<a href="/acao?acao=seguir&id_usuario=<?=$usuario['id']?>" class="btn btn-success">Seguir</a>
+										<?php } ?>
+
+										<?php if($usuario['seguindo_sn'] == 1) { ?>
+										<!-- O button de não seguir só será exibido se o contador retornar 1, no caso 1 pois o usuário
+										autenticado está seguindo esse usuário-->
+										<a href="/acao?acao=deixar_de_seguir&id_usuario=<?=$usuario['id']?>" class="btn btn-danger">Deixar de seguir</a>
+										<?php } ?>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<?php } ?>
+
+		</div>
+	</div>
+</div>

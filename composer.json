@@ -1,0 +1,19 @@
+{
+    "name": "miniframework", 
+    "require": {
+        "php": ">= 7.0" 
+    },
+    "authors": [
+        {
+            "name": "Ana Flávia",
+            "email": "ladydawn17396@hotmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "App/",
+            "MF\\": "vendor/MF/"
+        }
+    }
+}
+
